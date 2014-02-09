@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem "mailgun", git: "https://github.com/HashNuke/mailgun.git"
+gem "twitter", "~> 5.5.1"
