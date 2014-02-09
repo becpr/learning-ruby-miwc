@@ -15,11 +15,14 @@ Mailgun.configure do |config|
 end
 
 # creates csv file of ten twitter search results
-my_file = CSV.open("my_results.csv", "wb") do |csv|
+CSV.open("my_results.csv", "wb") do |csv|
     client.search("learn to code", :result_type => "recent").take(10).each do |tweet|
-        puts tweet.text
+        csv.puts [tweet.text, tweet.user.screen_name]
     end
 end
+
+# makes file open so it can be attached
+my_file = File.open("my_results.csv", "r")
 
 @mailgun = Mailgun()
 
